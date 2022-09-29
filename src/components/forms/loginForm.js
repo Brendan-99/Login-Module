@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Grid,Paper,Avatar,TextField,Button, Typography} from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
+import { AccountContext } from '../../contexts/accountContext';
 
 const LoginForm = () => {
 
@@ -9,8 +10,7 @@ const LoginForm = () => {
     const avatarStyle={backgroundColor:'#1bbd7e',margin:'25px auto'}
     const btnStyle={margin: '20px 0'}
 
-    const [username,setUsername] = useState("");
-    const [password,setPassword] = useState("");
+    const {username,setUsername,password,setPassword}=useContext(AccountContext);
 
     const submitForm = async (e) =>{
         
