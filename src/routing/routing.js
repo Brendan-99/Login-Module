@@ -15,19 +15,21 @@ const Routing = () =>{
         password,setPassword
     }
 
+    const contextProvider=(ele)=>{
+        return (
+            <AccountContext.Provider value={providerValue}>
+                {ele}
+            </AccountContext.Provider>
+        )
+    }
+
     return (
         <Router>
-            <AccountContext.Provider 
-                value={providerValue}>
                 <Routes>
-                    <Route path="/" element={<SignUpForm/>}/>
-                    <Route path="/loginForm" element={<LoginForm/>}/>
+                    <Route path="/" element={contextProvider(<SignUpForm/>)}/>
+                    <Route path="/loginForm" element={contextProvider(<LoginForm/>)}/>
+                    <Route path="/home" element={<Home/>}/>
                 </Routes>
-            </AccountContext.Provider>
-            <Routes>
-                <Route path="/home" element={<Home/>}/>
-            </Routes>
-
         </Router>
     )
 }
